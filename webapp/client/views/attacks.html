@@ -1,0 +1,197 @@
+<div class="row"">
+  <div class="col-md-12 col-sm-12 col-xs-12" ng-init="temp()">
+    <div class="dashboard_graph">
+
+      <div class="row x_title">
+        <div class="col-md-6">
+          <h3>Network Activities</h3>
+          <h2>{{danger_ip}}</h2>
+        </div>
+      </div>
+
+      <div class="col-md-9 col-sm-9 col-xs-12" style="margin-top: 20px;">
+        <div id="placeholder33" style="height: 260px; display: none" class="demo-placeholder"></div>
+        <div style="width: 100%;">
+          <div class="demo-placeholder" style="width: 100%; height:540px; padding-left:5px; padding-right:15px; ">
+
+          <!-- IP address boxes -->
+            <div class="row">
+              <div class="col-md-2 col-sm-2 col-xs-2"></div>
+              <div class="col-md-2 col-sm-2 col-xs-2" style="border: 2px solid cadetblue; border-radius: 10px; background-color: rgba(26, 187, 156, 0.2); text-align: center; vertical-align: middle; line-height: 70px ">
+                <span style="font-weight: 900; font-size: 25px;">192.163.0.21</span>
+              </div>
+              <div class="col-md-2 col-sm-2 col-xs-2">
+                <div style="margin-right:-15px; text-align: center; vertical-align: middle; line-height: 70px"><span class="pull-right" style="font-weight:800; font-size: 15px;" ng-show="networkPath() == 2"></span></div>
+                <div class="col-md-6">
+                    <div style="width:230px; height:10px; position: relative; margin-top: 24px;" ng-style="{'background-color': getPathColor()}" ng-show="networkPath() == 2"></div>
+                </div>
+              </div>
+              <div class="col-md-2 col-sm-2 col-xs-2">
+                <div style="margin-right:-15px; text-align: center; vertical-align: middle; line-height: 70px"><span class="pull-right" style="font-weight:800; font-size: 15px;" ng-show="networkPath() == 2"></span></div>
+                <div class="col-md-6">
+                    <div style="width:80px; height:10px; position: relative; margin-top: 24px;" ng-style="{'background-color': getPathColor()}" ng-show="networkPath() == 2"></div>
+                </div>
+              </div>
+              <div class="col-md-2 col-sm-2 col-xs-2" style="border: 2px solid cadetblue; border-radius: 10px; background-color: rgba(231, 76, 60, 0.2); text-align: center; vertical-align: middle; line-height: 70px " ng-show="networkPath() == 3">
+                <span style="font-weight: 900; font-size: 25px;">{{danger_ip}}</span>
+              </div>
+              <div class="col-md-2 col-sm-2 col-xs-2"></div>
+            </div>
+
+
+            <!-- transition boxes -->
+            <div class="row">
+              <div class="col-md-2 col-sm-2 col-xs-2"></div>
+              <div class="col-md-2 col-sm-2 col-xs-2" style="vertical-align: middle; min-height: 150px;">
+                <div class="row" style="height:150px">
+                  <div class="col-md-6" style="margin-right:-15px; text-align: center; vertical-align: middle; line-height: 150px"><span class="pull-right" style="font-weight:800; font-size: 15px;" ng-show="networkPath() == 1">{{dataPacket[dataPacket.length - 1].data}}</span></div>
+                  <div class="col-md-6">
+                    <div style="width:10px; height:135px; position: relative; margin-top: 5px;" ng-style="{'background-color': getPathColor()}" ng-show="networkPath() == 1"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-2 col-sm-2 col-xs-2"></div>
+              <div class="col-md-2 col-sm-2 col-xs-2" style="vertical-align: middle; min-height: 150px;">
+                <div class="row" style="height:150px">
+                  <div class="col-md-6" style="margin-right:-15px; text-align: center; vertical-align: middle; line-height: 150px"><span class="pull-right" style="font-weight:800; font-size: 15px;" ng-show="networkPath() == 2">{{dataPacket[dataPacket.length - 1].data}}</span></div>
+                  <div class="col-md-6">
+                    <div style="width:10px; height:135px; position: relative; margin-top: 5px;" ng-style="{'background-color': getPathColor()}" ng-show="networkPath() == 2"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-2 col-sm-2 col-xs-2" style="vertical-align: middle; min-height: 150px;">
+                <div class="row" style="height:150px" ng-show="networkPath() == 3">
+                  <div class="col-md-6" style="margin-right:-15px; text-align: center; vertical-align: middle; line-height: 150px"><span class="pull-right" style="font-weight:800; font-size: 15px;">{{dataPacket[dataPacket.length - 1].data}}</span></div>
+                  <div class="col-md-6">
+                    <div style="width:10px; height:135px; position: relative; margin-top: 5px;" ng-style="{'background-color': getPathColor()}" ></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-2 col-sm-2 col-xs-2"></div>
+            </div>
+
+
+            <!-- Gateway boxes -->
+            <div class="row">
+              <div class="col-md-2 col-sm-2 col-xs-2"></div>
+              <div class="col-md-8 col-sm-8 col-xs-8" style="border: 2px solid cadetblue; border-radius: 10px; background-color: rgba(26, 187, 156, 0.2); text-align: center; vertical-align: middle; line-height: 80px;">
+                <span style="font-weight: 900; font-size: 25px;">Gateway1 (192.168.0.20)</span>
+              </div>
+              <!-- <div class="col-md-1 col-sm-1 col-xs-1"></div>
+              <div class="col-md-1 col-sm-1 col-xs-1"></div>
+              <div class="col-md-24 col-sm-4 col-xs-4" style="border: 2px solid cadetblue; border-radius: 10px; background-color: rgba(26, 187, 156, 0.2); text-align: center; vertical-align: middle; line-height: 80px ">
+                <span style="font-weight: 900; font-size: 25px;">Gateway2 (192.168.0.30)</span>
+              </div> -->
+              <div class="col-md-2 col-sm-2 col-xs-2"></div>
+            </div>
+
+
+            <!-- 2nd transition boxes -->
+            <!-- transition boxes -->
+            <div class="row">
+              <div class="col-md-2 col-sm-2 col-xs-2" style="vertical-align: middle; min-height: 120px;visibility: hidden;">
+                <div class="row" style="height:120px">
+                  <div class="col-md-6" style="margin-right:-15px; text-align: center; vertical-align: middle; line-height: 120px"><span class="pull-right" style="font-weight:800; font-size: 15px;">yo</span></div>
+                  <div class="col-md-6">
+                    <div style="width:10px; height:110px; background-color: #1ABC9C; position: relative; margin-top: 5px;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-2 col-sm-2 col-xs-2" style="vertical-align: middle; min-height: 120px;">
+                <div class="row" style="height:120px" ng-show="unitIdPath() == 1">
+                  <div class="col-md-6" style="margin-right:-15px; text-align: center; vertical-align: middle; line-height: 120px"><span class="pull-right" style="font-weight:800; font-size: 15px;"></span></div>
+                  <div class="col-md-6">
+                    <div style="width:10px; height:110px; position: relative; margin-top: 5px;" ng-style="{'background-color': getPathColor()}" ></div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-md-2 col-sm-2 col-xs-2" style="vertical-align: middle; min-height: 120px;visibility: hidden;">
+                <div class="row" style="height:120px">
+                  <div class="col-md-6" style="margin-right:-15px; text-align: center; vertical-align: middle; line-height: 120px"><span class="pull-right" style="font-weight:800; font-size: 15px;">yo</span></div>
+                  <div class="col-md-6">
+                    <div style="width:10px; height:110px; background-color: #1ABC9C; position: relative; margin-top: 5px;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-2 col-sm-2 col-xs-2" style="vertical-align: middle; min-height: 120px;">
+                <div class="row" style="height:120px" ng-show="unitIdPath() == 7">
+                  <div class="col-md-6" style="margin-right:-15px; text-align: center; vertical-align: middle; line-height: 120px"><span class="pull-right" style="font-weight:800; font-size: 15px;"></span></div>
+                  <div class="col-md-6">
+                    <div style="width:10px; height:110px; position: relative; margin-top: 5px;" ng-style="{'background-color': getPathColor()}" ></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-2 col-sm-2 col-xs-2"></div>
+
+              <div class="col-md-2 col-sm-2 col-xs-2" style="vertical-align: middle; min-height: 120px;visibility: hidden;">
+                <div class="row" style="height:120px">
+                  <div class="col-md-6" style="margin-right:-15px; text-align: center; vertical-align: middle; line-height: 120px"><span class="pull-right" style="font-weight:800; font-size: 15px;">yo</span></div>
+                  <div class="col-md-6">
+                    <div style="width:10px; height:110px; background-color: #1ABC9C; position: relative; margin-top: 5px;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- Final machines  -->
+            <div class="row">
+              <div class="col-md-2 col-sm-2 col-xs-2" style="padding-right: 5px; padding-left: 5px;">
+                <div style="border: 2px solid cadetblue; border-radius: 10px; background-color: rgba(26, 187, 156, 0.2); text-align: center; vertical-align: middle; line-height: 70px; margin-right: 2px">
+                  <span style="font-weight: 900; font-size: 20px;">UnitID 0</span>
+                </div>
+              </div>
+              
+              <div class="col-md-2 col-sm-2 col-xs-2" style="padding-right: 5px; padding-left: 5px;">
+                <div style="border: 2px solid cadetblue; border-radius: 10px; background-color: rgba(26, 187, 156, 0.2); text-align: center; vertical-align: middle; line-height: 70px; margin-right: 2px">
+                  <span style="font-weight: 900; font-size: 20px;">Unit ID 1</span>
+                </div>
+              </div>
+              <div class="col-md-2 col-sm-2 col-xs-2" style="padding-right: 5px; padding-left: 5px;">
+                <div style="border: 2px solid cadetblue; border-radius: 10px; background-color: rgba(26, 187, 156, 0.2); text-align: center; vertical-align: middle; line-height: 70px; margin-right: 2px">
+                  <span style="font-weight: 900; font-size: 20px;">UnitID 3</span>
+                </div>
+              </div>
+              <div class="col-md-2 col-sm-2 col-xs-2" style="padding-right: 5px; padding-left: 5px;">
+                <div style="border: 2px solid cadetblue; border-radius: 10px; background-color: rgba(26, 187, 156, 0.2); text-align: center; vertical-align: middle; line-height: 70px; margin-right: 2px">
+                  <span style="font-weight: 900; font-size: 20px;">UnitID 7</span>
+                </div>
+              </div>
+              <div class="col-md-2 col-sm-2 col-xs-2" style="padding-right: 5px; padding-left: 5px;">
+                
+              </div>
+              <div class="col-md-2 col-sm-2 col-xs-2" style="padding-right: 5px; padding-left: 5px;">
+                <div style="border: 2px solid cadetblue; border-radius: 10px; background-color: rgba(26, 187, 156, 0.2); text-align: center; vertical-align: middle; line-height: 70px; margin-right: 2px">
+                  <span style="font-weight: 900; font-size: 20px;">UnitID 2</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-12 bg-white" style="height: 540px" ng-init="getDataPacket()">
+        <div class="x_title">
+          <h6>
+            <span class="pull-left" style="width: 37%; color: :#73879C">Source IP</span>
+            <span style="align-content: center; width:36%">Destination IP</span>
+            <span class="pull-right" style="align-content: center; width:13%; margin-right: 40px;">Command</span>
+            <span class="" style="width:14%; margin-left: 20px;">Data</span>
+          </h6>
+        </div>
+        <div class="clearfix"></div>
+        <button ng-click = "getDataPacket()">click</button>
+        
+
+        <div id="attackDiv" style="height:470px; scroll-behavior: auto; overflow: scroll;"></div>
+      </div>
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</div>

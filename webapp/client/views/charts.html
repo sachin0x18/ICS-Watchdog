@@ -1,0 +1,131 @@
+<!--
+    <div class="card" >
+        <div class="card__header">
+            <h2>Sales Statistics <small>Vestibulum purus quam scelerisque, mollis nonummy metus</small></h2>
+
+            <div class="actions">
+                <a href=""><i class="zmdi zmdi-check-all"></i></a>
+                <a href=""><i class="zmdi zmdi-trending-up"></i></a>
+                <div class="dropdown">
+                    <a href="" data-toggle="dropdown"><i class="zmdi zmdi-more-vert"></i></a>
+                    <ul class="dropdown-menu pull-right">
+                        <li><a href="">Change Date Range</a></li>
+                        <li><a href="">Change Graph Type</a></li>
+                        <li><a href="">Other Settings</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="flot-chart-edge">
+            <div id="chart-curved-line" class="flot-chart"></div>
+        </div>
+    </div>
+-->
+
+
+    <div class="row" ng-init="charts.loadLibraries()">
+        <div class="col-md-6">
+            <div class="card widget-analytic">
+                <div class="card__header">
+                    <h2>Number of Packets <small>Total Packets Transferred</small></h2>
+                    <div class="actions">
+                        <div class="dropdown">
+                            <a href="" data-toggle="dropdown"><i class="zmdi zmdi-more-vert"></i></a>
+                            <ul class="dropdown-menu pull-right">
+                                <li><a href="">Refresh</a></li>
+                                <li><a href="">Manage</a></li>
+                                <li><a href="">Settings</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card__body">
+                    <div class="widget-analytic__info">
+                        <i class="zmdi zmdi-caret-up-circle"></i>
+                        <h2>987,453</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card widget-analytic">
+                <div class="card__header">
+                    <h2>Motor Status <small>Status of motor currently</small></h2>
+                    <div class="actions">
+                        <div class="dropdown">
+                            <a href="" data-toggle="dropdown"><i class="zmdi zmdi-more-vert"></i></a>
+                            <ul class="dropdown-menu pull-right">
+                                <li><a href="">Refresh</a></li>
+                                <li><a href="">Manage</a></li>
+                                <li><a href="">Settings</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card__body">
+                    <div class="widget-analytic__info">
+                        <i class="zmdi zmdi-caret-up-circle"></i>
+                        <h2>356,785K</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card__header">
+                    <h2>Energy Meter</h2>
+                </div>
+
+                <div class="card__body">
+                    <div id="chart-dynamic-energy" class="flot-chart"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card__header">
+                    <h2>Frequency</h2>
+                </div>
+
+                <div class="card__body">
+                    <div id="chart-dynamic-frequency" class="flot-chart"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card__header">
+                    <h2>Network Flow Consumption</h2>
+                </div>
+
+                <div class="card__body">
+                    <div id="chart-donut" class="flot-chart flot-chart--lg"></div>
+                    <div class="flot-chart-legend flot-chart-legend--donut"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card__header">
+                    <h2>Packet Rate</h2>
+                </div>
+
+                <div class="card__body">
+                    <div id="chart-dynamic-rate" class="flot-chart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+        </div>
+    </div>
+
